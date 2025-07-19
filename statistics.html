@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Statistieken – Femicide in cijfers</title>
+  <title>Statistieken – Femicide en geweld in Nederland</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -14,29 +14,59 @@
     <a href="prevention.html">Preventie</a>
     <a href="about.html">Over</a>
   </nav>
+
   <header>
     <img src="assets/petitie_logo.jpeg" alt="Statistieken banner" />
-    <h1>Statistieken</h1>
+    <h1>Statistieken – Femicide in Nederland</h1>
   </header>
+
   <main>
-    <canvas id="femicideChart" width="400" height="200"></canvas>
-    <p>Bron: OM, CBS, Politie.nl – maandelijkse verdeling van geregistreerde femicidezaken in 2024.</p>
-    <script src="data/monthly_data.js"></script>
+    <section>
+      <canvas id="femicideChart" width="400" height="200"></canvas>
+      <p class="grafiek-uitleg">
+        <strong>Let op:</strong> De onderstaande maandcijfers zijn <em>geschat</em> op basis van het totaal van <strong>24 femicidezaken in 2024</strong>, gemeld door het <a href="https://www.om.nl/actueel/nieuws/2025/05/12/jaarbericht-2024" target="_blank">Openbaar Ministerie</a>. Er is geen publieke maandelijkse verdeling beschikbaar.
+      </p>
+    </section>
+
+    <section>
+      <h2>Jaarcijfers 2024</h2>
+      <ul>
+        <li><strong>Femicide:</strong> 24 zaken, 49 pogingen (OM, 2025)</li>
+        <li><strong>Huiselijk geweld:</strong> 1,3 miljoen slachtoffers (CBS/WODC)</li>
+        <li><strong>Seksueel grensoverschrijdend gedrag:</strong> 1,7 miljoen slachtoffers (CBS/WODC)</li>
+      </ul>
+      <p>Deze cijfers benadrukken de noodzaak voor betere bescherming, preventie en bewustwording.</p>
+    </section>
+
     <script>
       const ctx = document.getElementById('femicideChart').getContext('2d');
       new Chart(ctx, {
         type: 'bar',
-        data: femicideData2024,
+        data: {
+          labels: ["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
+          datasets: [{
+            label: "Geschat aantal femicidezaken (2024)",
+            data: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], // totaal 24, verdeeld over 12 maanden
+            backgroundColor: "rgba(139,0,0,0.8)"
+          }]
+        },
         options: {
           responsive: true,
           plugins: {
             legend: { display: true },
-            title: { display: true, text: 'Femicidezaken per maand (2024)' }
+            title: { display: true, text: 'Femicidezaken per maand (geschat – 2024)' }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              stepSize: 1
+            }
           }
         }
       });
     </script>
   </main>
+
   <footer>
     © 2025 Bread Winners Studio – Samen tegen geweld. #StopFemicide
   </footer>
