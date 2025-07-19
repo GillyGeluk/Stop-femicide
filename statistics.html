@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistieken – Femicide in cijfers</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="statistics.html">Statistieken</a>
+    <a href="prevention.html">Preventie</a>
+    <a href="about.html">Over</a>
+  </nav>
+  <header>
+    <img src="assets/petitie_logo.jpeg" alt="Statistieken banner" />
+    <h1>Statistieken</h1>
+  </header>
+  <main>
+    <canvas id="femicideChart" width="400" height="200"></canvas>
+    <p>Bron: OM, CBS, Politie.nl – maandelijkse verdeling van geregistreerde femicidezaken in 2024.</p>
+    <script src="data/monthly_data.js"></script>
+    <script>
+      const ctx = document.getElementById('femicideChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: femicideData2024,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true },
+            title: { display: true, text: 'Femicidezaken per maand (2024)' }
+          }
+        }
+      });
+    </script>
+  </main>
+  <footer>
+    © 2025 Bread Winners Studio – Samen tegen geweld. #StopFemicide
+  </footer>
+</body>
+</html>
